@@ -94,6 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Builder(
         builder: (ctx) => Container(
+            decoration: BoxDecoration(color: Colors.pink[50]),
             padding:
                 const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
             child: Column(
@@ -116,16 +117,29 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
                 Container(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10.0, horizontal: 10.0),
                     height: 100,
                     width: double.infinity,
                     margin: const EdgeInsets.only(top: 20, bottom: 20),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15.0),
-                        border: Border.all(color: Colors.brown)),
+                        border: Border.all(color: Colors.brown),
+                        gradient: LinearGradient(
+                          begin: Alignment.topRight,
+                          end: Alignment.bottomLeft,
+                          colors: [
+                            Color.fromARGB(209, 33, 177, 243),
+                            Color.fromARGB(216, 226, 87, 156),
+                          ],
+                        )),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(questionList[n].question),
+                        Text(questionList[n].question,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600)),
                       ],
                     )),
                 Row(
@@ -133,7 +147,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: [
                     ElevatedButton(
                       onPressed: () => checkAns(false, ctx),
-                      child: const Text('False'),
+                      child: const Text(
+                        'False',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       style: ElevatedButton.styleFrom(
                           primary: Colors.red,
                           shape: RoundedRectangleBorder(
@@ -142,7 +159,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     ElevatedButton(
                       onPressed: () => checkAns(true, ctx),
-                      child: const Text('True'),
+                      child: const Text(
+                        'True',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       style: ElevatedButton.styleFrom(
                           primary: Colors.green,
                           shape: RoundedRectangleBorder(
